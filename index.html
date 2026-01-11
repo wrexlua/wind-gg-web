@@ -1,0 +1,344 @@
+
+<!-- Definitions -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!---->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="wind.gg">
+    <meta name="description" content="The leading edge in video game enhancement software.">
+    <meta name="theme-color" content="#B23365">
+    <!---->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="wind.gg">
+    <meta property="og:url" content="http://wind.gg">
+    <meta property="og:description" content="The leading edge in video game enhancement software.">
+    <meta property="og:image" content="images/icon.png">
+    <!---->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="wind.gg">
+    <meta name="twitter:title" content="wind.gg">
+    <meta name="twitter:description" content="The leading edge in video game enhancement software.">
+    <meta name="twitter:image" content="images/icon.png">
+    <meta name="twitter:image:alt" content="wind.gg">
+    <!---->
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <!-- Other -->
+    <title>wind.gg</title>
+    <!-- Style -->
+    <style>
+        /* Fonts */
+        @font-face
+        {
+            font-family: "PixelFont";
+            src: url("fonts/proggyclean.ttf") format("truetype");
+        }
+        /* Body */
+        body, html
+        {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #0F0207;
+        }
+        /* Containers */
+        .outline
+        {
+            background-color: #0F0207;
+            padding: 1px;
+        }
+        /**/
+        .inline
+        {
+            background-color: #260915;
+            padding: 1px;
+        }
+        /**/
+        .light_contrast
+        {
+            background-color: #1E0610;
+            padding: 4px;
+            text-align: center;
+        }
+        /**/
+        .dark_contrast
+        {
+            background-color: #16040C;
+            padding: 4px;
+            text-align: center;
+        }
+        /**/
+        .button_container
+        {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        /**/
+        .store_container
+        {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9000;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
+        /**/
+        .rich_text
+        {
+            font-family: "PixelFont", monospace;
+            font-size: 16px;
+            text-decoration: none;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
+            font-smooth: never;
+            text-rendering: optimizeLegibility;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0px -1px 0 #000, 0px 1px 0 #000, -1px 0px 0 #000, 1px 0px 0 #000;
+            color: #b4b4b4;
+        }
+        /* Other */
+        iframe
+        {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            box-sizing: border-box;
+            display: block;
+        }
+        /**/
+        button
+        {
+            all: unset;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px 20px;
+            color: white;
+            font-size: 16px;
+        }
+        /**/
+        button:hover
+        {
+            background-color: #1E0610;
+        }
+        /**/
+        img
+        {
+            display: block;
+        }
+    </style>
+    <!-- Scripts -->
+    <script>
+        function button_item(item)
+        {
+            const button_inline = document.createElement('div');
+            //
+            button_inline.className = 'inline';
+            //
+            const button_outline = document.createElement('div');
+            //
+            button_outline.className = 'outline';
+            //
+            const button_dark_contrast = document.createElement('button');
+            //
+            button_dark_contrast.className = 'dark_contrast rich_text';
+            button_dark_contrast.textContent = item.content;
+            //
+            if (item.title)
+            {
+                button_dark_contrast.title = item.title;
+            };
+            //
+            if (item.link)
+            {
+                if (item.link === 'purchase')
+                {
+                    let container = document.querySelector('.store_container');
+                    //
+                    if (!container)
+                    {
+                        container = document.createElement('div');
+                        //
+                        container.className = 'store_container';
+                        //
+                        document.body.insertAdjacentElement('beforeend', container);
+                    };
+                    //
+                    button_dark_contrast.addEventListener("click", function()
+                    {
+                        container.style.display = 'block';
+                        //
+                        document.body.style.overflow = 'hidden';
+                        //
+                        container.innerHTML = '';
+                        //
+                        const wrapper = document.createElement('div');
+                        //
+                        wrapper.style.position = 'absolute';
+                        wrapper.style.width = '100%';
+                        wrapper.style.height = '100%';
+                        wrapper.style.margin = 'auto';
+                        wrapper.style.zIndex = '1';
+                        //
+                        var loader = document.createElement('div');
+                        //
+                        loader.style.position = 'absolute';
+                        loader.style.width = '100%';
+                        loader.style.height = '100%';
+                        loader.style.margin = 'auto';
+                        loader.style.zIndex = '1';
+                        loader.style.display = 'flex';
+                        loader.style.justifyContent = 'center';
+                        loader.style.alignItems = 'center';
+                        loader.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="35" height="35" style="shape-rendering: auto; display: block; background: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle cx="50" cy="50" fill="none" stroke="rgba(255, 255, 255, 1)" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></circle><g></g></g><!-- [ldio] generated by https://loading.io --></svg>`;
+                        //
+                        wrapper.insertAdjacentElement('beforeend', loader);
+                        //
+                        container.appendChild(wrapper);
+                        //
+                        var frame = document.createElement('iframe');
+                        //
+                        frame.src = "https://atl.bgng.io/embed/external";
+                        frame.style.position = 'absolute';
+                        frame.style.width = '100%';
+                        frame.style.height = '100%';
+                        //
+                        frame.addEventListener('load', function()
+                        {
+                            loader.remove();
+                        }, false);
+                        //
+                        frame.scrolling = 'auto';
+                        //
+                        wrapper.appendChild(frame);
+                    });
+                }
+                else
+                {
+                    button_dark_contrast.onclick = function()
+                    {
+                        window.open(item.link, '_blank');
+                    };
+                };
+            };
+            //
+            button_outline.appendChild(button_dark_contrast);
+            button_inline.appendChild(button_outline);
+            //
+            return button_inline;
+        };
+        //
+        document.addEventListener("DOMContentLoaded", function()
+        {
+            const body = document.getElementById('window_body');
+            //
+            fetch('https://raw.githubusercontent.com/wrexlua/wind-gg-web/refs/heads/main/items.atl')
+            .then(response => {
+                if (!response.ok)
+                {
+                    throw new Error("Invalid response");
+                }
+                return response.json();
+            })
+            .then(data => {
+                body.innerHTML = '';
+                //
+                data.forEach(item => {
+                    switch(item.item)
+                    {
+                    case 1:
+                        const button_container = document.createElement('div');
+                        //
+                        button_container.className = 'button_container';
+                        //
+                        item.content.forEach(button => {
+                            if (button.item === 2)
+                            {
+                                button_container.appendChild(button_item(button));
+                            };
+                        });
+                        //
+                        body.appendChild(button_container);
+                        //
+                        break;
+                    case 2:
+                        body.appendChild(button_item(item));
+                        //
+                        break;
+                    case 3:
+                        const video_inline = document.createElement('div');
+                        //
+                        video_inline.className = 'inline';
+                        //
+                        const video_outline = document.createElement('div');
+                        //
+                        video_outline.className = 'outline';
+                        //
+                        const video_dark_contrast = document.createElement('div');
+                        //
+                        video_dark_contrast.className = 'dark_contrast';
+                        //
+                        const video_frame = document.createElement('iframe');
+                        //
+                        video_frame.width = (item.width || 384);
+                        video_frame.height = (item.height || 216);
+                        video_frame.src = item.content;
+                        video_frame.setAttribute('frameborder', '0');
+                        video_frame.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+                        video_frame.setAttribute('allowfullscreen', '');
+                        //
+                        video_dark_contrast.appendChild(video_frame);
+                        video_outline.appendChild(video_dark_contrast);
+                        video_inline.appendChild(video_outline);
+                        //
+                        body.appendChild(video_inline);
+                        //
+                        break;
+                    };
+                });
+            })
+            .catch(error => {
+                console.error("error while loading content", error);
+            });
+            //
+            window.addEventListener('message', function(event)
+            {
+                if (event.data === 'closeBillgangIframe')
+                {
+                    const container = document.querySelector('.store_container');
+                    //
+                    if (container)
+                    {
+                        container.innerHTML = '';
+                        //
+                        document.body.removeAttribute('style');
+                        //
+                        container.removeAttribute('style');
+                    };
+                };
+            });
+        });
+    </script>
+</head>
+<!-- Body -->
+<body id="window_body">
+    <!-- Info -->
+    <div class="inline">
+        <div class="outline">
+            <div class="dark_contrast rich_text">
+                <p>Loading showcase...</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
