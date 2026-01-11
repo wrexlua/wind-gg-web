@@ -1,0 +1,54 @@
+[
+	{
+		"item": 1,
+		"content": [
+			{
+				"item": 2,
+				"content": "Discord",
+				"link": "https://discord.gg/Xc9BtyBjpw",
+				"title": "Communication Server"
+			},
+			{
+				"item": 2,
+				"content": "Purchase",
+				"link": "https://example.com",
+				"title": "Software Purchase"
+			}
+		]
+	},
+	{
+		"item": 3,
+		"content": "https://www.youtube.com/embed/wh9mqN5fzlk?rel=0",
+		"width": 384,
+		"height": 216
+	},
+	{
+		"item": 1,
+		"content": [
+			{
+				"item": 2,
+				"content": "Terms",
+				"link": "terms",
+				"title": "Terms of Service"
+			},
+			{
+				"item": 2,
+				"content": "Refunds",
+				"link": "refunds",
+				"title": "Refund Policy"
+			},
+			{
+				"item": 2,
+				"content": "Privacy",
+				"link": "privacy",
+				"title": "Privacy Policy"
+			}
+		]
+	},
+	{
+		"item": 2,
+		"content": "Requirements",
+		"link": "requirements",
+		"title": "System Requirements"
+	}
+]
